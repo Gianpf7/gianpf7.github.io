@@ -3,44 +3,61 @@ var cardMap = new Map();
 //** REGISTRO DE EVENTOS *******************************************************
 
 var dialog = document.getElementById('dlgAdd');
+var contato = document.getElementById('dlgContato');
 var btnAdd = document.getElementById('btnAdd');
-var btnRefresh = document.getElementById('btnRefresh');
+var btnRefresh = document.getElementById('btnContato');
+var btnRefresh = document.getElementById('btnSendMsg');
+var btnRefresh = document.getElementById('btnCancelMsg');
 var btnModalOk = document.getElementById('btnModalOk');
 var btnModalCancel = document.getElementById('btnModalCancel');
 
 btnAdd.addEventListener('click', function() {
   dialog.showModal();
+  document.getElementById('selHeroi').innerText = "";
 });
 
-btnRefresh.addEventListener('click', function() {
-  console.log("btnRefresh click");
+btnContato.addEventListener('click', function() {
+  contato.showModal();
 });
 
 btnModalOk.addEventListener('click', function() {
-  var city = document.getElementById('selHeroi');
-  getHeroi(city.value);
+  var heroi = document.getElementById('selHeroi');
+  getHeroi(heroi.value);
   dialog.close();
+});
+
+btnSendMsg.addEventListener('click', function() {
+  var nome = document.getElementById('nomeUsuario');
+  var msg = document.getElementById('msgUsuario');
+  entraContato(nome.value, msg.value);
+  contato.close();
 });
 
 btnModalCancel.addEventListener('click', function() {
   dialog.close();
 });
 
-//******************************************************************************
+btnCancelMsg.addEventListener('click', function() {
+  contato.close();
+});
 
 //** FUNÇÕES DE INTERFACE ******************************************************
 
 var atualizaCardHeroi = function(card, data){
-   var weatherCity = card.querySelector(".heroi-nome");
-   var weatherImage = card.querySelector(".heroi-foto");
-   var weatherTemp = card.querySelector(".heroi-desc");
-   var weatherUpdate = card.querySelector(".heroi-gibis");
-   var weatherText = card.querySelector(".heroi-atualizado");
-   weatherCity.textContent = data.nome;
-   weatherImage.src = data.foto;
-   weatherTemp.textContent = data.descricao;
-   weatherUpdate.textContent = data.gibis;
-   weatherText.textContent = "Atualizado em "+ data.lastUpdate.toLocaleString();
+   var nome = card.querySelector(".heroi-nome");
+   var foto = card.querySelector(".heroi-foto");
+   var desc = card.querySelector(".heroi-desc");
+   var gibis = card.querySelector(".heroi-gibis");
+   var atualizado = card.querySelector(".heroi-atualizado");
+   nome.textContent = data.nome;
+   foto.src = data.foto;
+   desc.textContent = data.descricao;
+   data.gibis.forEach(gibi => {
+     gibis.textContent += gibi.name + ', ';
+     console.log(gibi.name);
+   });
+   //gibis.textContent = data.gibis;
+   atualizado.textContent = "Postado em "+ data.modificado;
 }
 
 var getCard = function(heroi){
@@ -55,7 +72,10 @@ var getCard = function(heroi){
       cardMap.set(heroi, card);
       return card;
    }
+}
 
+var hideCard = function(card){
+  card.setAttribute('display', 'none');
 }
 
 //** INFORMAÇÕES ***************************************************************
@@ -88,25 +108,43 @@ var getHeroi = function(heroi){
       response.json().then(function updateFromCache(json) {
         console.log("ONLINE");
         console.log(json.data.results[0]);
-        console.log(json);
         atualizaHeroi(json.data.results[0], card);
         });
     })
       .catch(function(error){
-        console.log(error);
+        //console.log("ERRO: "+error);
+        alert(error);
       });
 }
 
 var atualizaHeroi = function(heroi, card){
-  console.log(heroi);
-   var data = {
-     nome: heroi.name,
-     descricao: heroi.description,
-     modificado: heroi.modified,
-     foto: "https"+String(heroi.thumbnail.path+'.'+heroi.thumbnail.extension).substring(4),
-     gibis: heroi.thumbnail.comics
-   };
-   atualizaCardHeroi(card, data);
+  if(heroi == undefined){
+    hideCard(card);
+    return card;
+  }
+  var data = {
+    nome: heroi.name,
+    descricao: heroi.description,
+    modificado: heroi.modified,
+    foto: "https"+String(heroi.thumbnail.path+'.'+heroi.thumbnail.extension).substring(4),
+    gibis: heroi.comics.items
+  };
+  console.log(data);
+  atualizaCardHeroi(card, data);
+}
+
+var entraContato = function(nome, msg){
+  var whats = "https://api.whatsapp.com/send?phone=554399248015&text=\*Nome:\*"+nome+"\*Mensagem:\*"+msg;
+  location.href = whats;
+  /*fetch(whats)
+    .then(function(response){
+      response.json().then(function updateFromCache(json) {
+        alert("Mensagem enviada com sucesso!");
+        });
+    })
+      .catch(function(error){
+        alert(error);
+      });*/
 }
 
 //******************************************************************************

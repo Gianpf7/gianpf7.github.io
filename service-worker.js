@@ -1,10 +1,10 @@
 var dataCacheName = 'Herois';
 var cacheName = 'Herois Marvel';
 var filesToCache = [
-  '/',
-  '/index.html',
-  '/js/app.js',
-  '/css/style.css',
+  './',
+  './index.html',
+  './js/app.js',
+  './css/style.css',
   'https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
@@ -38,7 +38,7 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-  var dataUrl = 'https://query.yahooapis.com/v1/public/yql';
+  var dataUrl = 'https://gateway.marvel.com/v1/public/characters';
   if (e.request.url.indexOf(dataUrl) > -1) {
    //console.log('[Service Worker] Fetch', e.request.url);
    e.respondWith(

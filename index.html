@@ -40,8 +40,9 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation">
-            <button id="btnRefresh" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-              <i class="material-icons">refresh</i>
+            <button id="btnContato" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+              Entrar em contato
+              <img src="./images/whatsapp.png" style="height: 50%"/>
             </button>
             <button id="btnAdd"  class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
               <i class="material-icons">add</i>
@@ -69,14 +70,20 @@
                   <img src="images/loading.gif" class="heroi-foto"/>
                 </div>
                 <div class="heroi-descricao">
+                  <h4>Descrição</h4>
                   <span class="heroi-desc"></span>
                 </div>
               </div>
               <div class="mdl-card__actions">
-                <div class="mdl-card__supporting-text heroi-gibis"></div>
+                <div class="mdl-card__supporting-text">
+                  <h5>Aparece em...</h5>
+                  <span class="heroi-gibis"></span>
+                </div>
               </div>
               <div class="mdl-card__actions">
-                <div class="mdl-card__supporting-text heroi-atualizado"></div>
+                <div class="mdl-card__supporting-text heroi-atualizado">
+                  <span class="heroi-atualizado"></span>
+                </div>
               </div>
             </div>
 
@@ -86,16 +93,26 @@
     </div>
 
     <dialog class="mdl-dialog" id="dlgAdd">
-      <p> Digite o nome do herói a ser buscado (em inglês)</p>
+      <p> Digite o nome do herói Marvel a ser buscado (em inglês)</p>
       <input id="selHeroi"/>
       <div class="mdl-dialog__actions">
         <button id="btnModalOk" type="button" class="mdl-button mdl-js-button mdl-button--raised"> OK </button>
         <button id="btnModalCancel" type="button" class="mdl-button mdl-js-button mdl-button--raised"> Cancelar </button>
       </div>
     </dialog>
+
+    <dialog class="mdl-dialog" id="dlgContato">
+        <p> Digite seu nome </p>
+        <input id="nomeUsuario">
+        <p> Digite a mensagem a ser enviada </p>
+        <input id="msgUsuario"/>
+        <div class="mdl-dialog__actions">
+          <button id="btnSendMsg" type="button" class="mdl-button mdl-js-button mdl-button--raised"> OK </button>
+          <button id="btnCancelMsg" type="button" class="mdl-button mdl-js-button mdl-button--raised"> Cancelar </button>
+        </div>
+      </dialog>
   </main>
   <script defer src="js/app.js"></script>
-  <script defer src="js/herois.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
 </body>
 </html>
