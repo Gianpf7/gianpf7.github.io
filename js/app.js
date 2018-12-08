@@ -68,7 +68,7 @@ var getHeroi = function(heroi){
   var date = Date();
   var ts = Date.now();
   var hash = MD5(ts+"96bc1303f3a2477b9e8f87dd63d1000087fa51feafed8249ba7093473960254e6303f507");
-  var str = "http://gateway.marvel.com/v1/public/characters?ts="+ts+"&hash="+hash+"&apikey=afed8249ba7093473960254e6303f507&name="+heroi;
+  var str = "https://gateway.marvel.com/v1/public/characters?ts="+ts+"&hash="+hash+"&apikey=afed8249ba7093473960254e6303f507&name="+heroi;
   
   if ('caches' in window) {
     caches.match(str).then(function(response) {
