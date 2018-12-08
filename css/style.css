@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman|Quicksand');
+
+#btnAdd {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.mdl-card__title {
+    padding-bottom: 0px;
+    text-align: center;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+}
+
+.mdl-card__supporting-text{
+    padding: 5px;
+    text-align: center;
+}
+
+.mdl-card__actions{
+    padding-top: 0px;
+}
+ 
+.weather-card-image {
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+ 
+.weather-card-image > img {
+    width: 115px;
+}
+ 
+.heroi-card-desc {
+    font-family: 'Charmonman', cursive;
+    float: right;
+    margin-top: 20px;
+    font-size: 72px;
+}
+
+.heroi-foto {
+    width: 100%
+}

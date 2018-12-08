@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8"/>
+  <title>Herois Marvel</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/style.css" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
+  <meta name="apple-mobile-web-app-title" content="Herois Marvel">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicon-16x16.png">
+  <link rel="manifest" href="./images/icons/site.webmanifest">
+  <link rel="mask-icon" href="./images/icons/safari-pinned-tab.svg" color="#606060">
+  <link rel="shortcut icon" href="./images/icons/favicon.ico">
+  <meta name="apple-mobile-web-app-title" content="Marvel PWA">
+  <meta name="application-name" content="Marvel PWA">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="./images/icon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+
+</head>
+<body>
+  <main id="app">
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Herois Marvel</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation">
+            <button id="btnRefresh" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+              <i class="material-icons">refresh</i>
+            </button>
+            <button id="btnAdd"  class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+              <i class="material-icons">add</i>
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Herois Marvel</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href=""> <i class="material-icons">add</i> Adicionar Heroi</a>
+          <a class="mdl-navigation__link" href=""> <i class="material-icons">refresh</i> Atualizar Informações</a>
+          <a class="mdl-navigation__link" href=""> <i class="material-icons">lightbulb_outline</i> Sobre o App</a>
+        </nav>
+      </div>
+
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <div id="cards">
+            <div id="base-card" class="mdl-card mdl-shadow--4dp" style="margin: 0 auto; margin-top: 10px;" hidden>
+              <div class="mdl-card__title heroi-nome">Herói</div>
+              <div class="mdl-card__actions">
+                <div  class="heroi-card-image">
+                  <img src="images/loading.gif" class="heroi-foto"/>
+                </div>
+                <div class="heroi-descricao">
+                  <span class="heroi-desc"></span>
+                </div>
+              </div>
+              <div class="mdl-card__actions">
+                <div class="mdl-card__supporting-text heroi-gibis"></div>
+              </div>
+              <div class="mdl-card__actions">
+                <div class="mdl-card__supporting-text heroi-atualizado"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="mdl-dialog" id="dlgAdd">
+      <p> Digite o nome do herói a ser buscado (em inglês)</p>
+      <input id="selHeroi"/>
+      <div class="mdl-dialog__actions">
+        <button id="btnModalOk" type="button" class="mdl-button mdl-js-button mdl-button--raised"> OK </button>
+        <button id="btnModalCancel" type="button" class="mdl-button mdl-js-button mdl-button--raised"> Cancelar </button>
+      </div>
+    </dialog>
+  </main>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/herois.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
+</body>
+</html>
