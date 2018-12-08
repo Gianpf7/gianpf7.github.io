@@ -76,7 +76,7 @@ var getHeroi = function(heroi){
         console.log('Achei no cache ', str);
         response.json().then(function updateFromCache(json) {
           console.log("Cache");
-          atualizaHeroi(json.results[0], card);
+          atualizaHeroi(json.data.results[0], card);
           console.log(json.data);
         });
       }
