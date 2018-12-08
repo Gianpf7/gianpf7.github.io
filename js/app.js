@@ -103,7 +103,7 @@ var atualizaHeroi = function(heroi, card){
      nome: heroi.name,
      descricao: heroi.description,
      modificado: heroi.modified,
-     foto: heroi.thumbnail.path+'.'+heroi.thumbnail.extension,
+     foto: "https"+String(heroi.thumbnail.path+'.'+heroi.thumbnail.extension).substring(4),
      gibis: heroi.thumbnail.comics
    };
    atualizaCardHeroi(card, data);
